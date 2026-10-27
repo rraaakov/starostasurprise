@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#6366f1" />
+  <meta name="description" content="Староста — менеджер студенческой группы" />
+  <title>Староста</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="toast-container"></div>
+  <div id="confetti-container"></div>
+
+  <!-- Онбординг -->
+  <section id="onboarding" class="auth-screen hidden">
+    <div class="glass auth-card">
+      <div class="auth-logo">С</div>
+      <h1>Староста</h1>
+      <p class="auth-sub">Создайте аккаунт старосты</p>
+      <form id="onboarding-form" autocomplete="off">
+        <label>Логин<input type="text" id="ob-username" required minlength="3" placeholder="starosta" /></label>
+        <label>Пароль<input type="password" id="ob-password" required minlength="6" placeholder="минимум 6 символов" /></label>
+        <label>Повторите пароль<input type="password" id="ob-password2" required minlength="6" /></label>
+        <p id="ob-error" class="error"></p>
+        <button type="submit" class="btn-primary">Создать аккаунт</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Вход -->
+  <section id="login" class="auth-screen hidden">
+    <div class="glass auth-card">
+      <div class="auth-logo">С</div>
+      <h1>Староста</h1>
+      <p class="auth-sub">Вход</p>
+      <form id="login-form" autocomplete="off">
+        <label>Логин<input type="text" id="login-username" required /></label>
+        <label>Пароль<input type="password" id="login-password" required /></label>
+        <label class="checkbox-row"><input type="checkbox" id="login-remember" checked /><span>Запомнить меня</span></label>
+        <p id="login-error" class="error"></p>
+        <button type="submit" class="btn-primary">Войти</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Приложение -->
+  <div id="app" class="hidden">
+    <header class="app-header glass">
+      <h2 id="app-title">Главная</h2>
+      <div id="header-actions">
+        <button class="icon-btn" id="btn-panic" title="Паника">🚨</button>
+        <button class="icon-btn" id="btn-search" title="Поиск">🔍</button>
+      </div>
+    </header>
+
+    <main id="view" class="view"></main>
+
+    <nav class="bottom-nav glass">
+      <a href="#/dashboard" data-route="dashboard" data-idx="0"><span class="nav-icon">🏠</span><span>Главная</span></a>
+      <a href="#/students" data-route="students" data-idx="1"><span class="nav-icon">👥</span><span>Студенты</span></a>
+      <a href="#/schedule" data-route="schedule" data-idx="2"><span class="nav-icon">📚</span><span>Расписание</span></a>
+      <a href="#/calendar" data-route="calendar" data-idx="3"><span class="nav-icon">📅</span><span>Календарь</span></a>
+      <a href="#/more" data-route="more" data-idx="4"><span class="nav-icon">⋯</span><span>Ещё</span><span id="tasks-badge" class="nav-badge hidden"></span></a>
+    </nav>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" id="modal-content"></div>
+  </div>
+
+  <script src="storage.js"></script>
+  <script src="auth.js"></script>
+  <script src="schedule-import.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
